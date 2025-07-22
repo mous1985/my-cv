@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV Mustapha Benazzouz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb; /* Bleu professionnel */
+      --secondary: #1e40af; /* Bleu foncé */
+      --accent: #f59e0b; /* Orange moderne */
+      --success: #10b981; /* Vert pour les compétences */
+      --background: #ffffff; /* Blanc pur */
+      --surface: #f8fafc; /* Gris très clair */
+      --text-primary: #1f2937; /* Noir doux */
+      --text-secondary: #6b7280; /* Gris moyen */
+      --border: #e5e7eb; /* Bordure subtile */
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.3;
+      color: var(--text-primary);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 0.5rem 0.25rem;
+      font-size: 12px;
+    }
+
+    .cv-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--background);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="20" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .header * {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .header a {
+      color: #ffffff !important;
+    }
+    
+    .header a:hover {
+      color: var(--accent) !important;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .job-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      opacity: 0.9;
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-item::before {
+      content: '●';
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+
+    .content {
+      padding: 1rem;
+    }
+
+    .section {
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      position: relative;
+    }
+
+    h2::before {
+      content: '';
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--accent), var(--primary));
+      border-radius: 2px;
+    }
+
+    .about-text {
+      background: var(--surface);
+      padding: 0.7rem;
+      border-radius: 6px;
+      border-left: 3px solid var(--accent);
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+
+    .skill-category {
+      background: var(--surface);
+      padding: 0.6rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      font-size: 0.8rem;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .skill-category strong {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .experience-item {
+      background: var(--background);
+      padding: 0.7rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      margin-bottom: 0.6rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .experience-item:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+    }
+
+    .experience-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--success), var(--primary));
+      border-radius: 0 3px 3px 0;
+    }
+
+    .project-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.15rem 0.3rem;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      margin-right: 0.2rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .job-header {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+    }
+
+    .company {
+      color: var(--primary);
+    }
+
+    .period {
+      color: var(--text-secondary);
+      font-weight: 500;
+      background: var(--surface);
+      padding: 0.15rem 0.4rem;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      display: inline-block;
+      margin-left: 0.3rem;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 0.2rem;
+      padding-left: 0.8rem;
+      position: relative;
+      font-size: 0.8rem;
+      line-height: 1.3;
+    }
+
+    li::before {
+      content: '▸';
+      color: var(--accent);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      font-size: 0.7rem;
+    }
+
+    .education-item {
+      background: var(--surface);
+      padding: 0.5rem 0.7rem;
+      border-radius: 4px;
+      margin-bottom: 0.3rem;
+      border-left: 3px solid var(--primary);
+      font-size: 0.8rem;
+      line-height: 1.3;
+    }
+
+    .language-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.4rem;
+    }
+
+    .language-item {
+      background: var(--surface);
+      padding: 0.5rem;
+      border-radius: 4px;
+      text-align: center;
+      border: 1px solid var(--border);
+      font-size: 0.75rem;
+    }
+
+    .hobbies-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .hobby-tag {
+      background: linear-gradient(135deg, var(--accent), #f97316);
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 12px;
+      font-weight: 500;
+      font-size: 0.7rem;
+    }
+
+    .simple-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .simple-item {
+      font-size: 0.85rem;
+      line-height: 1.4;
+      padding: 0.3rem 0;
+    }
+
+    a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem 0.5rem;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      
+      .content {
+        padding: 1.5rem;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: white !important;
+        padding: 0 !important;
+        font-size: 11px !important;
+        line-height: 1.2 !important;
+      }
+      
+      .cv-container {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        max-width: none !important;
+      }
+      
+      .header {
+        padding: 1rem 0.8rem !important;
+        page-break-inside: avoid;
+      }
+      
+      .content {
+        padding: 0.8rem !important;
+      }
+      
+      .section {
+        margin-bottom: 0.8rem !important;
+        page-break-inside: avoid;
+      }
+      
+      .experience-item {
+        margin-bottom: 0.5rem !important;
+        padding: 0.5rem !important;
+        page-break-inside: avoid;
+      }
+      
+      h1 {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.1rem !important;
+      }
+      
+      h2 {
+        font-size: 1rem !important;
+        margin-bottom: 0.3rem !important;
+      }
+      
+      .job-title {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.6rem !important;
+      }
+      
+      .about-text {
+        padding: 0.5rem !important;
+        font-size: 0.8rem !important;
+        line-height: 1.3 !important;
+      }
+      
+      .skills-grid {
+        gap: 0.3rem !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+      
+      .skill-category {
+        padding: 0.4rem !important;
+        font-size: 0.75rem !important;
+      }
+      
+      li {
+        margin-bottom: 0.1rem !important;
+        font-size: 0.75rem !important;
+        line-height: 1.2 !important;
+      }
+      
+      .education-item {
+        padding: 0.4rem 0.5rem !important;
+        margin-bottom: 0.2rem !important;
+        font-size: 0.75rem !important;
+        line-height: 1.2 !important;
+      }
+      
+      .language-item {
+        padding: 0.4rem !important;
+        font-size: 0.7rem !important;
+      }
+      
+      .hobby-tag {
+        padding: 0.2rem 0.4rem !important;
+        font-size: 0.65rem !important;
+      }
+      
+      .contact-info {
+        gap: 0.8rem !important;
+        font-size: 0.75rem !important;
+      }
+      
+      .job-header {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.2rem !important;
+      }
+      
+      .period {
+        font-size: 0.65rem !important;
+        padding: 0.1rem 0.3rem !important;
+      }
+      
+      .contact-item::before {
+        font-size: 0.6rem !important;
+      }
+      
+      .simple-item {
+        font-size: 0.75rem !important;
+        padding: 0.2rem 0 !important;
+      }
+      
+      h2::before {
+        width: 2px !important;
+      }
+      
+      /* Remove forced page break and optimize layout */
+      .section:nth-of-type(2) {
+        page-break-after: auto !important;
+      }
+      
+      /* Force page break after experience section */
+      .section:nth-of-type(3) {
+        page-break-after: always !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cv-container">
+    <div class="header">
+      <h1>Mustapha Benazzouz</h1>
+      <div class="job-title">Développeur Fullstack • Web3</div>
+      <div class="contact-info">
+        <div class="contact-item">Rouen, France</div>
+        <div class="contact-item">mustapha.benazzouz.213@gmail.com</div>
+        <div class="contact-item">+33 7 66 34 11 88</div>
+        <div class="contact-item"><a href="https://github.com/mous1985" target="_blank">GitHub</a></div>
+        <div class="contact-item"><a href="https://www.linkedin.com/in/mustapha-benazzouz-88646887/" target="_blank">LinkedIn</a></div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="section">
+        <h2>À propos</h2>
+        <div class="about-text">
+          Développeur fullstack passionné par l'innovation technologique, avec 12 ans d'expérience en restauration qui m'a forgé des compétences en gestion du stress et travail d'équipe. Reconversion réussie vers la tech avec spécialisation blockchain/Web3. Contributeur open source actif et participant aux hackathons.
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Compétences</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <strong>Langages Backend :</strong> Go, Rust, Python, C, Gno (blockchain)
+          </div>
+          <div class="skill-category">
+            <strong>Frontend & Web :</strong> JavaScript/TypeScript, React, Next.js, HTML5, CSS3
+          </div>
+          <div class="skill-category">
+            <strong>Blockchain & Web3 :</strong> Smart Contracts, DApps, Gnoland, Solidity bases
+          </div>
+          <div class="skill-category">
+            <strong>Outils de développement :</strong> Git, Docker, Linux, CI/CD, VS Code, Figma, Notion, Trello
+          </div>
+          <div class="skill-category">
+            <strong>Bases de données :</strong> SQL, PostgreSQL, SQLite, Redis (notions)
+          </div>
+          <div class="skill-category">
+            <strong>Soft Skills :</strong> Gestion du stress en environnement haute pression, leadership d'équipe, debugging méthodique
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Expérience Professionnelle</h2>
+        <div class="experience-item">
+          <div class="job-header">
+            <span class="company">Contributeur Open Source – Gnolang All in Bits</span>
+            <span class="period">Février 2024 - Présent</span>
+          </div>
+          <ul>
+            <li>Développement d'une DApp d'enchères complète sur l'écosystème Gnoland (blockchain innovante) • 500+ lignes de code Gno</li>
+            <li>Création de 5+ smart contracts sécurisés et packages réutilisables en langage Gno • Tests unitaires 90% coverage</li>
+            <li>Participation active aux code reviews (20+ PRs reviewées) et mentorat communautaire • 3 nouveaux contributeurs accompagnés</li>
+            <li>Contribution à l'écosystème Web3 émergent avec focus sur la scalabilité</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-header">
+            <span class="company">Étudiant Développeur – Zone01 Rouen (École peer-learning)</span>
+            <span class="period">2022 - 2024</span>
+          </div>
+          <ul>
+            <li>Formation intensive par projets (2000+ heures) dans une école innovante type 42</li>
+            <li>Développement d'un réseau social complet (Go backend + Next.js frontend) • 1000+ utilisateurs simulés</li>
+            <li>Maîtrise d'algorithmes complexes : graphes, optimisation, structures de données avancées • 95% de réussite aux projets</li>
+            <li>Apprentissage collaboratif et mentorat de pairs (15+ projets en équipe) • Taux de réussite équipe 100%</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-header">
+            <span class="company">Pizzaiolo & Commis de cuisine – Secteur Restauration</span>
+            <span class="period">2010 - 2022</span>
+          </div>
+          <ul>
+            <li>Gestion de la production en cuisine sous pression et dans le respect des délais • 200+ couverts/service</li>
+            <li>Travail en équipe dans un environnement dynamique et exigeant • Équipes de 5-8 personnes</li>
+            <li>Développement de compétences en organisation, multitâche et résolution rapide de problèmes • 0 plainte client</li>
+            <li>Service client et adaptation aux demandes spécifiques</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-header">
+            <span class="company">Stage – SONELGAZ Algérie</span>
+            <span class="period">2010</span>
+          </div>
+          <ul>
+            <li>Analyse de données temps réel via SISCOM (4 mois)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Formation & Certifications</h2>
+        <div class="education-item">
+          <strong>Développeur Fullstack – Zone01 Rouen (École peer-learning type 42)</strong> (2022 - 2024)
+        </div>
+        <div class="education-item">
+          <strong>Master Automatisation & Informatique Industrielle – UPJV Amiens</strong> (2013 - 2014)
+        </div>
+        <div class="education-item">
+          <strong>Master Réseaux Électriques – Université Ibn Khaldoun, Tiaret</strong> (2004 - 2009)
+        </div>
+        <div class="education-item">
+          <strong>Open Source :</strong> Contributeur Gnolang • Hackathons • <a href="https://github.com/mous1985" target="_blank">20+ repositories GitHub</a> • <a href="https://github.com/gnolang" target="_blank">Projets Gnoland</a>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Projets & Réalisations Techniques</h2>
+        <div class="experience-item">
+          <div class="job-header">
+            <span class="company">Kolise - App de Paris en Ligne Blockchain</span>
+            <span class="period">Juillet 2025</span>
+          </div>
+          <ul>
+            <li>Application de paris décentralisée sur blockchain Chiliz • React/Next.js • Smart contracts Solidity • Interface moderne avec 5+ fonctionnalités de paris</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-header">
+            <span class="company">DApp d'Enchères Blockchain Gnoland</span>
+            <span class="period">2024</span>
+          </div>
+          <ul>
+            <li>Application décentralisée avec smart contracts sécurisés • Interface React/Next.js • 20+ commits open source • Système d'enchères en temps réel</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-header">
+            <span class="company">Réseau Social Fullstack & Algorithmes</span>
+            <span class="period">2022-2023</span>
+          </div>
+          <ul>
+            <li>Backend Go avec API REST • Frontend Next.js • Algorithmes optimisés : Lem-in (graphes), Filler (IA Rust) • Performance améliorée de 40%</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Langues</h2>
+        <div class="simple-list">
+          <div class="simple-item"><strong>Français</strong> - Natif</div>
+          <div class="simple-item"><strong>Arabe</strong> - Natif</div>
+          <div class="simple-item"><strong>Anglais</strong> - Parlé et écrit</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Loisirs</h2>
+        <div class="simple-list">
+          <div class="simple-item">Boxe</div>
+          <div class="simple-item">Course à pied</div>
+          <div class="simple-item">Basketball</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

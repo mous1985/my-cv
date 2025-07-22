@@ -1,0 +1,57 @@
+const { chromium } = require('playwright');
+const path = require('path');
+
+async function convertToPDF(language = 'fr') {
+  // Lance un navigateur Chromium
+  const browser = await chromium.launch();
+  const page = await browser.newPage();
+  
+  // Détermine le fichier HTML à utiliser
+  const htmlFile = language === 'en' ? 'mustapha_cv_en.html' : 'mustapha_cv.html';
+  const outputFile = language === 'en' ? 'CV_Mustapha_Benazzouz_EN.pdf' : 'CV_Mustapha_Benazzouz.pdf';
+  
+  // Charge le fichier HTML
+  const htmlPath = path.join(__dirname, htmlFile);
+  await page.goto(`file://${htmlPath}`);
+  
+  // Attend que la page soit complètement chargée (polices, CSS, etc.)
+  await page.waitForLoadState('networkidle');
+  
+  // Optimisations pour PDF
+  await page.addStyleTag({
+    content: `
+      @media print {
+        body {
+          background: white !important;
+          padding: 0 !important;
+        }
+        .cv-container {
+          box-shadow: none !important;
+          border-radius: 0 !important;
+          margin: 0 !important;
+        }
+      }
+    `
+  });
+  
+  // Génère le PDF avec des options optimisées
+  await page.pdf({
+    path: outputFile,
+    format: 'A4',
+    printBackground: true,
+    margin: {
+      top: '0.5cm',
+      right: '0.5cm',
+      bottom: '0.5cm',
+      left: '0.5cm'
+    }
+  });
+  
+  await browser.close();
+  console.log(`✅ PDF généré avec succès : ${outputFile}`);
+}
+
+// Récupère l'argument de ligne de commande
+const language = process.argv[2] || 'fr';
+
+convertToPDF(language).catch(console.error);
