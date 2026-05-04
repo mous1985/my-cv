@@ -25,14 +25,19 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      height: auto !important;
+      min-height: auto !important;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       line-height: 1.3;
       color: var(--text-primary);
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
+      min-height: auto;
       padding: 0.5rem 0.25rem;
-      font-size: 12px;
+      font-size: 11px;
     }
 
     .cv-container {
@@ -77,17 +82,17 @@
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 1.6rem;
       font-weight: 700;
       margin-bottom: 0.2rem;
       letter-spacing: -0.02em;
     }
 
     .job-title {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
       opacity: 0.9;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
     }
 
     .contact-info {
@@ -142,7 +147,7 @@
       padding: 0.7rem;
       border-radius: 6px;
       border-left: 3px solid var(--accent);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       line-height: 1.4;
     }
 
@@ -158,7 +163,7 @@
       border-radius: 6px;
       border: 1px solid var(--border);
       transition: all 0.3s ease;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
     }
 
     .skill-category:hover {
@@ -213,7 +218,7 @@
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: 0.3rem;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
 
     .company {
@@ -240,7 +245,7 @@
       margin-bottom: 0.2rem;
       padding-left: 0.8rem;
       position: relative;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       line-height: 1.3;
     }
 
@@ -259,7 +264,7 @@
       border-radius: 4px;
       margin-bottom: 0.3rem;
       border-left: 3px solid var(--primary);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       line-height: 1.3;
     }
 
@@ -275,7 +280,7 @@
       border-radius: 4px;
       text-align: center;
       border: 1px solid var(--border);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
     }
 
     .hobbies-list {
@@ -300,8 +305,8 @@
     }
 
     .simple-item {
-      font-size: 0.85rem;
-      line-height: 1.4;
+      font-size: 0.78rem;
+      line-height: 1.35;
       padding: 0.3rem 0;
     }
 
@@ -345,6 +350,7 @@
         padding: 0 !important;
         font-size: 11px !important;
         line-height: 1.2 !important;
+        min-height: auto !important;
       }
       
       .cv-container {
@@ -356,7 +362,7 @@
       
       .header {
         padding: 1rem 0.8rem !important;
-        page-break-inside: avoid;
+        page-break-inside: auto !important;
       }
       
       .content {
@@ -365,13 +371,13 @@
       
       .section {
         margin-bottom: 0.8rem !important;
-        page-break-inside: avoid;
+        page-break-inside: auto !important;
       }
       
       .experience-item {
         margin-bottom: 0.5rem !important;
         padding: 0.5rem !important;
-        page-break-inside: avoid;
+        page-break-inside: auto !important;
       }
       
       h1 {
@@ -461,9 +467,20 @@
         page-break-after: auto !important;
       }
       
-      /* Force page break after experience section */
+      /* Avoid forcing a page break after the experience section for better print flow */
       .section:nth-of-type(3) {
-        page-break-after: always !important;
+        page-break-after: auto !important;
+      }
+
+      /* Keep job header and its list together to avoid orphaned titles */
+      .job-header {
+        page-break-after: avoid !important;
+        break-after: avoid;
+      }
+
+      .job-header + ul {
+        page-break-before: avoid !important;
+        break-before: avoid;
       }
     }
   </style>
@@ -472,7 +489,7 @@
   <div class="cv-container">
     <div class="header">
       <h1>Mustapha Benazzouz</h1>
-      <div class="job-title">Développeur Fullstack • Web3</div>
+      <div class="job-title"> Technicien Support Informatique </div>
       <div class="contact-info">
         <div class="contact-item">Rouen, France</div>
         <div class="contact-item">mustapha.benazzouz.213@gmail.com</div>
@@ -486,30 +503,33 @@
       <div class="section">
         <h2>À propos</h2>
         <div class="about-text">
-          Développeur fullstack passionné par l'innovation technologique, avec 12 ans d'expérience en restauration qui m'a forgé des compétences en gestion du stress et travail d'équipe. Reconversion réussie vers la tech avec spécialisation blockchain/Web3. Contributeur open source actif et participant aux hackathons.
-        </div>
+          Je suis à la recherche d’un poste de Technicien Support Informatique pour apporter un bon support aux utilisateurs au quotidien.
+Chez SONELGAZ, j’ai géré le support technique : diagnostic de pannes, résolution de problèmes matériels et logiciels, suivi des tickets et assistance directe aux utilisateurs internes.
+Grâce à mes années en restauration, je suis habitué à travailler sous pression tout en restant organisé et rigoureux. J’aime trouver des solutions rapides et concrètes pour satisfaire les gens.
+Aujourd’hui, je suis en pleine reconversion dans l’informatique avec une formation intensive à Zone01. Je maîtrise déjà les outils de support, le déploiement de mises à jour et un peu d’automatisation.
+Je suis motivé pour mettre mon expérience terrain et mon sens du service client au profit d’une nouvelle équipe.
       </div>
 
       <div class="section">
         <h2>Compétences</h2>
         <div class="skills-grid">
           <div class="skill-category">
-            <strong>Langages Backend :</strong> Go, Rust, Python, C, Gno (blockchain)
+            <strong>Infrastructure & DevOps</strong> Docker (conteneurisation et déploiements automatisés), CI/CD (pipelines avec GitHub Actions/Jenkins), Administration Linux, Scripting automatisation (Bash/Python), Git pour infra as code. Notions en cloud (AWS explorations) et réseaux (simulations Cisco Packet Tracer) – en apprentissage autodidacte et via formation Ironhack à venir.
           </div>
           <div class="skill-category">
-            <strong>Frontend & Web :</strong> JavaScript/TypeScript, React, Next.js, HTML5, CSS3
+            <strong>Langages & Développement:</strong> Go, Rust, Python, C, Gno (blockchain), JavaScript/TypeScript, React, Next.js, HTML5, CSS3.
           </div>
           <div class="skill-category">
-            <strong>Blockchain & Web3 :</strong> Smart Contracts, DApps, Gnoland, Solidity bases
+            <strong>Blockchain & Web3:</strong> Smart Contracts (Gno/Solidity bases), DApps (développement et déploiement).
           </div>
           <div class="skill-category">
-            <strong>Outils de développement :</strong> Git, Docker, Linux, CI/CD, VS Code, Figma, Notion, Trello
+            <strong>Données & Stockage:</strong> SQL, PostgreSQL, SQLite, Redis (notions)
           </div>
           <div class="skill-category">
-            <strong>Bases de données :</strong> SQL, PostgreSQL, SQLite, Redis (notions)
+            <strong>Outils Transversaux:</strong> VS Code, GLPI, Figma, Notion, Trello, Hackmd, Canva.
           </div>
           <div class="skill-category">
-            <strong>Soft Skills :</strong> Gestion du stress en environnement haute pression, leadership d'équipe, debugging méthodique
+            <strong>Soft Skills :</strong> problem solving, Gestion du stress en environnement haute pression, leadership d'équipe, debugging méthodique
           </div>
         </div>
       </div>
@@ -518,34 +538,59 @@
         <h2>Expérience Professionnelle</h2>
         <div class="experience-item">
           <div class="job-header">
-            <span class="company">Contributeur Open Source – Gnolang All in Bits</span>
-            <span class="period">Février 2024 - Présent</span>
+            <span class="company">Contributeur Freelance – All in Bits (Gnoland Blockchain)</span>
+            <span class="period">Septembre 2024 - Février 2025</span>
           </div>
           <ul>
-            <li>Développement d'une DApp d'enchères complète sur l'écosystème Gnoland (blockchain innovante) • 500+ lignes de code Gno</li>
-            <li>Création de 5+ smart contracts sécurisés et packages réutilisables en langage Gno • Tests unitaires 90% coverage</li>
-            <li>Participation active aux code reviews (20+ PRs reviewées) et mentorat communautaire • 3 nouveaux contributeurs accompagnés</li>
-            <li>Contribution à l'écosystème Web3 émergent avec focus sur la scalabilité</li>
+            <li>Proposition de features innovantes pour l'écosystème Gnoland, incluant des améliorations d'automatisation via scripts Bash/Python pour optimiser les déploiements et scaler les systèmes décentralisés.</li>
+            <li>Réalisation de code reviews sur 20+ PRs de contributeurs, en intégrant CI/CD (GitHub Actions) pour valider tests automatisés et assurer une scalabilité sans faille.</li>
+            <li>Développement de packages réutilisables avec focus sur l'automatisation des workflows, contribuant à une architecture blockchain plus résiliente.</li>
+            <li>Participation à des réunions bimensuelles en anglais avec la core team pour discuter progrès, proposer optimisations infra (e.g., Docker pour conteneurisation de la GnoVM), et aligner sur roadmap.</li>
           </ul>
         </div>
 
         <div class="experience-item">
           <div class="job-header">
-            <span class="company">Étudiant Développeur – Zone01 Rouen (École peer-learning)</span>
-            <span class="period">2022 - 2024</span>
+            <span class="company">Stage – All in Bits (Gnoland Blockchain)</span>
+            <span class="period">Février 2024 - Mai 2024</span>
+          </div>
+          <ul>
+            <li>Immersion approfondie dans l'architecture blockchain, systèmes décentralisés et GnoVM (machine virtuelle en construction), avec analyse de scalabilité et debugging pour identifier bugs critiques.</li>
+            <li>Mise en place de tests unitaires et end-to-end (90% coverage) via pipelines CI/CD automatisés, utilisant Docker pour simuler environnements décentralisés et reproduire issues.</li>            <li>Maîtrise d'algorithmes complexes : graphes, optimisation, structures de données avancées • 95% de réussite aux projets</li>
+            <li>Signalement et résolution d'issues via GitHub, en collaborant avec la communauté pour renforcer l'écosystème Web3 émergent.</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-header">
+            <span class="company">Apprenant Développeur – Zone01 Rouen (École peer-learning)</span>
+            <span class="period">juin 2022 -juin 2024</span>
           </div>
           <ul>
             <li>Formation intensive par projets (2000+ heures) dans une école innovante type 42</li>
             <li>Développement d'un réseau social complet (Go backend + Next.js frontend) • 1000+ utilisateurs simulés</li>
             <li>Maîtrise d'algorithmes complexes : graphes, optimisation, structures de données avancées • 95% de réussite aux projets</li>
-            <li>Apprentissage collaboratif et mentorat de pairs (15+ projets en équipe) • Taux de réussite équipe 100%</li>
+            <li>Apprentissage collaboratif (15+ projets en équipe) • Taux de réussite équipe 100%</li>
           </ul>
         </div>
 
         <div class="experience-item">
           <div class="job-header">
-            <span class="company">Pizzaiolo & Commis de cuisine – Secteur Restauration</span>
-            <span class="period">2010 - 2022</span>
+            <span class="company">SONELGAZ Tiaret-Technicien support informatique</span>
+            <span class="period">Mai 2017 - Juillet 2019</span>
+          </div>
+          <ul>
+            <li>Assurer le support technique aux utilisateurs internes, répondre aux demandes d’assistance, diagnostiquer et résoudre les problèmes matériels et logiciels
+Installation, configuration et maintenance des postes de travail, systèmes d’exploitation, applications métier et périphériques</li>
+            <li>Gestion des incidents et des tickets via les outils de support, avec suivi jusqu’à résolution et communication régulière avec les utilisateurs</li>
+            <li>Assistance sur les réseaux internes, accès aux ressources partagées, impressions, serveurs, et accès à distance</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-header">
+            <span class="company">Pizzaiolo & cuisinier – Secteur Restauration(job etudiant)</span>
+            <span class="period">2006 - 2018</span>
           </div>
           <ul>
             <li>Gestion de la production en cuisine sous pression et dans le respect des délais • 200+ couverts/service</li>
@@ -558,10 +603,10 @@
         <div class="experience-item">
           <div class="job-header">
             <span class="company">Stage – SONELGAZ Algérie</span>
-            <span class="period">2010</span>
+            <span class="period">mars 2010 - juin 2010</span>
           </div>
           <ul>
-            <li>Analyse de données temps réel via SISCOM (4 mois)</li>
+            <li>Analyse de données en temps réel via SISCOM</li>
           </ul>
         </div>
       </div>
@@ -569,7 +614,7 @@
       <div class="section">
         <h2>Formation & Certifications</h2>
         <div class="education-item">
-          <strong>Développeur Fullstack – Zone01 Rouen (École peer-learning type 42)</strong> (2022 - 2024)
+          <strong>Concepteur Developpeur d'application – Zone01 Rouen (École peer-to-peer learning type ecole 42)</strong> (2022 - 2024)
         </div>
         <div class="education-item">
           <strong>Master Automatisation & Informatique Industrielle – UPJV Amiens</strong> (2013 - 2014)
@@ -577,16 +622,13 @@
         <div class="education-item">
           <strong>Master Réseaux Électriques – Université Ibn Khaldoun, Tiaret</strong> (2004 - 2009)
         </div>
-        <div class="education-item">
-          <strong>Open Source :</strong> Contributeur Gnolang • Hackathons • <a href="https://github.com/mous1985" target="_blank">20+ repositories GitHub</a> • <a href="https://github.com/gnolang" target="_blank">Projets Gnoland</a>
-        </div>
       </div>
 
       <div class="section">
         <h2>Projets & Réalisations Techniques</h2>
         <div class="experience-item">
           <div class="job-header">
-            <span class="company">Kolise - App de Paris en Ligne Blockchain</span>
+            <span class="company">Kolise - App de paris sportifs sur la Blockchain Chiliz</span>
             <span class="period">Juillet 2025</span>
           </div>
           <ul>
@@ -606,11 +648,11 @@
 
         <div class="experience-item">
           <div class="job-header">
-            <span class="company">Réseau Social Fullstack & Algorithmes</span>
-            <span class="period">2022-2023</span>
+            <span class="company">examples de projet Zone01 rouen</span>
+            <span class="period">2022-2024</span>
           </div>
           <ul>
-            <li>Backend Go avec API REST • Frontend Next.js • Algorithmes optimisés : Lem-in (graphes), Filler (IA Rust) • Performance améliorée de 40%</li>
+            <li>Reseaux social (Backend Go avec API REST • Frontend Next.js • sqlite(DB)) • Algorithmes : Lem-in ( theories des graphes), Filler (IA Rust game)</li>
           </ul>
         </div>
       </div>
@@ -618,18 +660,17 @@
       <div class="section">
         <h2>Langues</h2>
         <div class="simple-list">
-          <div class="simple-item"><strong>Français</strong> - Natif</div>
-          <div class="simple-item"><strong>Arabe</strong> - Natif</div>
-          <div class="simple-item"><strong>Anglais</strong> - Parlé et écrit</div>
+          <div class="simple-item"><strong>Français</strong> - Natif (C2) – Langue principale pour communication professionnelle.</div>
+          <div class="simple-item"><strong>Arabe</strong> - Natif (C2) – Atout pour collaborations internationales.</div>
+          <div class="simple-item"><strong>Anglais</strong> - Courant parlé et écrit (B2) – Utilisé pour réunions bimensuelles avec core team All in Bits, documentation technique et code review</div>
         </div>
       </div>
 
       <div class="section">
         <h2>Loisirs</h2>
         <div class="simple-list">
-          <div class="simple-item">Boxe</div>
-          <div class="simple-item">Course à pied</div>
-          <div class="simple-item">Basketball</div>
+          <div class="simple-item">Boxe, course à pied, escalade</div>
+          <div class="simple-item">Lecture</div>
         </div>
       </div>
     </div>

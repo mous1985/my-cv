@@ -6,8 +6,12 @@ async function convertToPDF() {
   const browser = await chromium.launch();
   const page = await browser.newPage();
   
+  // Détermine le fichier HTML à utiliser
+  const htmlFile = 'mustapha_cv.html';
+  const outputFile = 'CV_Mustapha_Benazzouz_Devops.pdf';
+  
   // Charge le fichier HTML
-  const htmlPath = path.join(__dirname, 'mustapha_cv.html');
+  const htmlPath = path.join(__dirname, htmlFile);
   await page.goto(`file://${htmlPath}`);
   
   // Attend que la page soit complètement chargée (polices, CSS, etc.)
@@ -32,7 +36,7 @@ async function convertToPDF() {
   
   // Génère le PDF avec des options optimisées
   await page.pdf({
-    path: 'CV_Mustapha_Benazzouz_IT.pdf',
+    path: outputFile,
     format: 'A4',
     printBackground: true,
     margin: {
@@ -44,7 +48,8 @@ async function convertToPDF() {
   });
   
   await browser.close();
-  console.log('✅ PDF généré avec succès : CV_Mustapha_Benazzouz_IT.pdf');
+  console.log(`✅ PDF généré avec succès : ${outputFile}`);
 }
 
 convertToPDF().catch(console.error);
+

@@ -25,14 +25,19 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      height: auto !important;
+      min-height: auto !important;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       line-height: 1.3;
       color: var(--text-primary);
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
+      min-height: auto;
       padding: 0.5rem 0.25rem;
-      font-size: 12px;
+      font-size: 11px;
     }
 
     .cv-container {
@@ -77,14 +82,14 @@
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 1.6rem;
       font-weight: 700;
       margin-bottom: 0.2rem;
       letter-spacing: -0.02em;
     }
 
     .job-title {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
       opacity: 0.9;
       margin-bottom: 0.8rem;
@@ -142,7 +147,7 @@
       padding: 0.7rem;
       border-radius: 6px;
       border-left: 3px solid var(--accent);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       line-height: 1.4;
     }
 
@@ -158,7 +163,7 @@
       border-radius: 6px;
       border: 1px solid var(--border);
       transition: all 0.3s ease;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
     }
 
     .skill-category:hover {
@@ -213,7 +218,7 @@
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: 0.3rem;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
 
     .company {
@@ -240,7 +245,7 @@
       margin-bottom: 0.2rem;
       padding-left: 0.8rem;
       position: relative;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       line-height: 1.3;
     }
 
@@ -259,7 +264,7 @@
       border-radius: 4px;
       margin-bottom: 0.3rem;
       border-left: 3px solid var(--primary);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       line-height: 1.3;
     }
 
@@ -275,7 +280,7 @@
       border-radius: 4px;
       text-align: center;
       border: 1px solid var(--border);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
     }
 
     .hobbies-list {
@@ -300,8 +305,8 @@
     }
 
     .simple-item {
-      font-size: 0.85rem;
-      line-height: 1.4;
+      font-size: 0.78rem;
+      line-height: 1.35;
       padding: 0.3rem 0;
     }
 
@@ -345,6 +350,7 @@
         padding: 0 !important;
         font-size: 11px !important;
         line-height: 1.2 !important;
+        min-height: auto !important;
       }
       
       .cv-container {
@@ -356,7 +362,7 @@
       
       .header {
         padding: 1rem 0.8rem !important;
-        page-break-inside: avoid;
+        page-break-inside: auto !important;
       }
       
       .content {
@@ -365,13 +371,13 @@
       
       .section {
         margin-bottom: 0.8rem !important;
-        page-break-inside: avoid;
+        page-break-inside: auto !important;
       }
       
       .experience-item {
         margin-bottom: 0.5rem !important;
         padding: 0.5rem !important;
-        page-break-inside: avoid;
+        page-break-inside: auto !important;
       }
       
       h1 {
@@ -461,9 +467,20 @@
         page-break-after: auto !important;
       }
       
-      /* Force page break after experience section */
+      /* Avoid forcing a page break after the experience section for better print flow */
       .section:nth-of-type(3) {
-        page-break-after: always !important;
+        page-break-after: auto !important;
+      }
+
+      /* Keep job header and its list together to avoid orphaned titles */
+      .job-header {
+        page-break-after: avoid !important;
+        break-after: avoid;
+      }
+
+      .job-header + ul {
+        page-break-before: avoid !important;
+        break-before: avoid;
       }
     }
   </style>
@@ -472,7 +489,7 @@
   <div class="cv-container">
     <div class="header">
       <h1>Mustapha Benazzouz</h1>
-      <div class="job-title">Fullstack Developer • Web3</div>
+      <div class="job-title">Seeking DevOps Apprenticeship • Fullstack Developer</div>
       <div class="contact-info">
         <div class="contact-item">Rouen, France</div>
         <div class="contact-item">mustapha.benazzouz.213@gmail.com</div>
@@ -486,7 +503,7 @@
       <div class="section">
         <h2>About</h2>
         <div class="about-text">
-          Passionate fullstack developer with expertise in technological innovation, bringing 12 years of restaurant experience that forged strong skills in stress management and teamwork. Successful career transition to tech with specialization in blockchain/Web3. Active open source contributor and hackathon participant.
+          Passionate fullstack developer with expertise in technological innovation, bringing 12 years of restaurant experience that forged strong skills in stress management and teamwork. Successful career transition to tech with specialization in blockchain/Web3. Active open source contributor and hackathon participant. Currently focused on DevOps practices (automation, CI/CD, Docker, cloud best practices) and seeking an apprenticeship in DevOps.
         </div>
       </div>
 
@@ -518,14 +535,15 @@
         <h2>Professional Experience</h2>
         <div class="experience-item">
           <div class="job-header">
-            <span class="company">Open Source Contributor – Gnolang All in Bits</span>
+            <span class="company">All in Bits — Internship & Freelance (Gnolang)</span>
             <span class="period">February 2024 - Present</span>
           </div>
           <ul>
-            <li>Developed complete auction DApp on Gnoland ecosystem (innovative blockchain) • 500+ lines of Gno code</li>
+            <li>Internship at All in Bits: participated in developing the Gnolang ecosystem and blockchain applications; at the end of the internship I was offered and signed a freelance contract.</li>
+            <li>Developed a complete auction DApp on the Gnoland ecosystem (innovative blockchain) • 500+ lines of Gno code</li>
             <li>Created 5+ secure smart contracts and reusable packages in Gno language • 90% unit test coverage</li>
             <li>Active participation in code reviews (20+ PRs reviewed) and community mentoring • 3 new contributors onboarded</li>
-            <li>Contributed to emerging Web3 ecosystem with focus on scalability</li>
+            <li>Contributed to the emerging Web3 ecosystem with a focus on scalability</li>
           </ul>
         </div>
 
